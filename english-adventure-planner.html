@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>La Mia Avventura in Inglese 🌈</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #FFF4D6;
+    --red:   #FF5A5F;
+    --teal:  #2EC4B6;
+    --yellow:#FFD23F;
+    --green: #6BCB77;
+    --pink:  #FF8FB1;
+    --blue:  #4D9DE0;
+    --purple:#A06CD5;
+    --ink:   #2B2D42;
+    --shadow: 4px 4px 0 var(--ink);
+    --shadow-lg: 6px 6px 0 var(--ink);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    height: 100%;
+    font-family: 'Quicksand', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+  body {
+    background-image:
+      radial-gradient(circle at 10% 20%, var(--pink) 2px, transparent 3px),
+      radial-gradient(circle at 80% 10%, var(--teal) 3px, transparent 4px),
+      radial-gradient(circle at 90% 70%, var(--yellow) 2px, transparent 3px),
+      radial-gradient(circle at 20% 80%, var(--blue) 3px, transparent 4px),
+      radial-gradient(circle at 50% 50%, var(--green) 2px, transparent 3px);
+    background-size: 200px 200px;
+    background-position: 0 0, 50px 80px, 120px 30px, 30px 150px, 180px 100px;
+    min-height: 100vh;
+  }
+  h1, h2, h3 { font-family: 'Fredoka', sans-serif; font-weight: 700; }
+  button { font-family: inherit; cursor: pointer; }
+
+  /* ---------- Layout ---------- */
+  .app {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 24px 20px 60px;
+  }
+  .screen { display: none; animation: pop 0.4s ease-out; }
+  .screen.active { display: block; }
+  @keyframes pop {
+    0%   { opacity: 0; transform: scale(0.92); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+
+  /* ---------- Header ---------- */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .logo {
+    font-family: 'Fredoka', sans-serif;
+    font-size: clamp(1.4rem, 4vw, 2rem);
+    background: var(--ink);
+    color: var(--yellow);
+    padding: 8px 18px;
+    border-radius: 14px;
+    transform: rotate(-2deg);
+    box-shadow: var(--shadow);
+    display: inline-block;
+  }
+  .greeting {
+    background: var(--red);
+    color: white;
+    padding: 8px 18px;
+    border: 3px solid var(--ink);
+    border-radius: 999px;
+    box-shadow: var(--shadow);
+    font-weight: 700;
+    transform: rotate(1.5deg);
+  }
+
+  /* ---------- Welcome screen ---------- */
+  .welcome-card {
+    background: white;
+    border: 4px solid var(--ink);
+    border-radius: 28px;
+    padding: 40px 30px;
+    text-align: center;
+    box-shadow: var(--shadow-lg);
+    max-width: 520px;
+    margin: 60px auto;
+    position: relative;
+  }
+  .welcome-card::before {
+    content: '🌈';
+    position: absolute;
+    top: -28px; left: -28px;
+    font-size: 3.5rem;
+    transform: rotate(-15deg);
+  }
+  .welcome-card::after {
+    content: '⭐';
+    position: absolute;
+    bottom: -22px; right: -18px;
+    font-size: 3rem;
+    transform: rotate(15deg);
+  }
+  .welcome-card h1 {
+    font-size: clamp(1.8rem, 5vw, 2.6rem);
+    color: var(--red);
+    line-height: 1.1;
+    margin-bottom: 8px;
+  }
+  .welcome-card .sub {
+    color: var(--ink);
+    opacity: 0.7;
+    margin-bottom: 28px;
+    font-size: 1.05rem;
+  }
+  .name-input {
+    width: 100%;
+    padding: 16px 20px;
+    font-size: 1.3rem;
+    font-family: 'Fredoka', sans-serif;
+    border: 4px solid var(--ink);
+    border-radius: 16px;
+    background: var(--yellow);
+    color: var(--ink);
+    text-align: center;
+    outline: none;
+    box-shadow: var(--shadow);
+    transition: transform 0.15s;
+  }
+  .name-input:focus { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--ink); }
+  .big-btn {
+    margin-top: 20px;
+    background: var(--green);
+    color: var(--ink);
+    border: 4px solid var(--ink);
+    padding: 16px 32px;
+    font-size: 1.3rem;
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 700;
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .big-btn:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--ink); }
+  .big-btn:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--ink); }
+
+  /* ---------- Lesson grid ---------- */
+  .intro-banner {
+    background: var(--teal);
+    border: 4px solid var(--ink);
+    border-radius: 22px;
+    padding: 18px 22px;
+    margin-bottom: 28px;
+    box-shadow: var(--shadow);
+    color: white;
+    font-family: 'Fredoka', sans-serif;
+    font-size: 1.15rem;
+    transform: rotate(-0.5deg);
+  }
+  .lesson-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 22px;
+  }
+  .lesson-card {
+    background: white;
+    border: 4px solid var(--ink);
+    border-radius: 22px;
+    padding: 22px;
+    box-shadow: var(--shadow);
+    cursor: pointer;
+    transition: transform 0.18s, box-shadow 0.18s;
+    position: relative;
+    overflow: hidden;
+  }
+  .lesson-card:hover { transform: translate(-3px, -3px) rotate(-1deg); box-shadow: 7px 7px 0 var(--ink); }
+  .lesson-card[data-color="1"] { background: var(--yellow); }
+  .lesson-card[data-color="2"] { background: var(--pink); }
+  .lesson-card[data-color="3"] { background: var(--blue); color: white;}
+  .lesson-card[data-color="4"] { background: var(--green); }
+  .lesson-card[data-color="5"] { background: var(--purple); color: white; }
+  .lesson-emoji { font-size: 3.5rem; line-height: 1; margin-bottom: 8px; display: block; }
+  .lesson-title-en { font-family: 'Fredoka', sans-serif; font-size: 1.45rem; line-height: 1.1; }
+  .lesson-title-it { font-family: 'Quicksand', sans-serif; font-style: italic; opacity: 0.85; margin-top: 4px; font-size: 0.95rem; }
+  .stars {
+    margin-top: 14px;
+    display: flex;
+    gap: 4px;
+    font-size: 1.4rem;
+  }
+  .stars .star { filter: grayscale(1); opacity: 0.4; }
+  .stars .star.earned { filter: none; opacity: 1; animation: wiggle 0.5s ease; }
+  @keyframes wiggle {
+    0%, 100% { transform: rotate(0); }
+    25%      { transform: rotate(-12deg) scale(1.2); }
+    75%      { transform: rotate(12deg) scale(1.2); }
+  }
+
+  /* ---------- Lesson view ---------- */
+  .back-btn {
+    background: var(--ink);
+    color: white;
+    border: 3px solid var(--ink);
+    padding: 10px 18px;
+    border-radius: 999px;
+    font-family: 'Fredoka', sans-serif;
+    font-size: 1rem;
+    box-shadow: var(--shadow);
+    margin-bottom: 20px;
+  }
+  .back-btn:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--red); }
+  .lesson-header {
+    background: var(--red);
+    color: white;
+    border: 4px solid var(--ink);
+    border-radius: 22px;
+    padding: 22px;
+    box-shadow: var(--shadow);
+    margin-bottom: 22px;
+    text-align: center;
+  }
+  .lesson-header h2 { font-size: 2rem; }
+  .lesson-header .it { font-style: italic; opacity: 0.92; margin-top: 4px; }
+  .section {
+    background: white;
+    border: 4px solid var(--ink);
+    border-radius: 22px;
+    padding: 22px;
+    box-shadow: var(--shadow);
+    margin-bottom: 22px;
+  }
+  .section-label {
+    display: inline-block;
+    background: var(--yellow);
+    border: 3px solid var(--ink);
+    padding: 4px 14px;
+    border-radius: 999px;
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 700;
+    margin-bottom: 14px;
+    transform: rotate(-2deg);
+  }
+  .section h3 { font-size: 1.4rem; margin-bottom: 12px; }
+  .section p.italian { font-style: italic; color: #555; margin-bottom: 14px; line-height: 1.5; }
+
+  /* ---------- Video ---------- */
+  .video-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border: 4px solid var(--ink);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    background: black;
+  }
+  .video-wrap iframe { width: 100%; height: 100%; border: 0; display: block; }
+  .video-note {
+    background: var(--cream);
+    border: 2px dashed var(--ink);
+    padding: 10px 14px;
+    border-radius: 12px;
+    margin-top: 14px;
+    font-size: 0.95rem;
+  }
+
+  /* ---------- Vocabulary ---------- */
+  .vocab-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 14px;
+  }
+  .vocab-card {
+    background: var(--cream);
+    border: 3px solid var(--ink);
+    border-radius: 16px;
+    padding: 14px;
+    text-align: center;
+    transition: transform 0.15s;
+    cursor: pointer;
+    user-select: none;
+  }
+  .vocab-card:hover { transform: scale(1.05) rotate(-2deg); background: var(--yellow); }
+  .vocab-card .emoji { font-size: 2.8rem; display: block; }
+  .vocab-card .en {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 1.2rem;
+    color: var(--red);
+    margin-top: 6px;
+  }
+  .vocab-card .it {
+    font-size: 0.9rem;
+    color: var(--ink);
+    opacity: 0.7;
+    font-style: italic;
+  }
+
+  /* ---------- Quiz ---------- */
+  .question {
+    margin-bottom: 26px;
+    padding: 18px;
+    background: var(--cream);
+    border: 3px solid var(--ink);
+    border-radius: 18px;
+  }
+  .question-text {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 1.25rem;
+    margin-bottom: 6px;
+    color: var(--ink);
+  }
+  .question-it {
+    font-size: 0.95rem;
+    font-style: italic;
+    color: #555;
+    margin-bottom: 14px;
+  }
+  .colour-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    justify-content: center;
+  }
+  .shape-btn {
+    background: white;
+    border: 4px solid var(--ink);
+    border-radius: 18px;
+    padding: 10px;
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s;
+    box-shadow: 3px 3px 0 var(--ink);
+    position: relative;
+  }
+  .shape-btn:hover:not(.coloured):not(.disabled) { transform: translate(-2px,-2px); box-shadow: 5px 5px 0 var(--ink); }
+  .shape-btn.coloured { animation: poppop 0.5s ease; cursor: default; }
+  .shape-btn.wrong { animation: shake 0.4s ease; }
+  .shape-btn.disabled { cursor: not-allowed; opacity: 0.6; }
+  .shape-btn svg { display: block; }
+  .shape-btn .label {
+    font-family: 'Fredoka', sans-serif;
+    text-align: center;
+    margin-top: 4px;
+    font-size: 0.95rem;
+  }
+  @keyframes poppop {
+    0%   { transform: scale(1); }
+    40%  { transform: scale(1.2) rotate(-5deg); }
+    100% { transform: scale(1); }
+  }
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25%      { transform: translateX(-8px); }
+    75%      { transform: translateX(8px); }
+  }
+  .feedback {
+    margin-top: 10px;
+    text-align: center;
+    font-family: 'Fredoka', sans-serif;
+    font-size: 1.1rem;
+    min-height: 1.4em;
+  }
+  .feedback.good { color: var(--green); }
+  .feedback.bad  { color: var(--red); }
+
+  .finish-btn {
+    background: var(--yellow);
+    border: 4px solid var(--ink);
+    padding: 16px 28px;
+    border-radius: 16px;
+    font-family: 'Fredoka', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    box-shadow: var(--shadow);
+    display: block;
+    margin: 28px auto 0;
+  }
+  .finish-btn:hover { transform: translate(-2px,-2px); box-shadow: 6px 6px 0 var(--ink); }
+
+  /* ---------- Celebration ---------- */
+  .celebrate {
+    position: fixed;
+    inset: 0;
+    background: rgba(43, 45, 66, 0.85);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    padding: 20px;
+  }
+  .celebrate.show { display: flex; animation: pop 0.4s ease; }
+  .celebrate-card {
+    background: white;
+    border: 5px solid var(--ink);
+    border-radius: 26px;
+    padding: 36px 30px;
+    text-align: center;
+    box-shadow: 8px 8px 0 var(--yellow);
+    max-width: 420px;
+  }
+  .celebrate-card .big {
+    font-size: 5rem;
+    animation: spin 1.5s ease infinite;
+    display: inline-block;
+  }
+  @keyframes spin {
+    0%, 100% { transform: rotate(-10deg) scale(1); }
+    50%      { transform: rotate(10deg) scale(1.1); }
+  }
+  .celebrate-card h2 { color: var(--red); margin: 10px 0; font-size: 2rem; }
+  .celebrate-card p  { margin-bottom: 18px; font-size: 1.1rem; }
+
+  /* Footer mini */
+  footer.mini {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 0.85rem;
+    opacity: 0.55;
+    font-style: italic;
+  }
+</style>
+</head>
+<body>
+
+<div class="app">
+
+  <!-- ============ WELCOME ============ -->
+  <section id="screen-welcome" class="screen active">
+    <div class="welcome-card">
+      <h1>La Mia Avventura<br>in Inglese!</h1>
+      <p class="sub">Ciao! Come ti chiami? 🌟<br><em>Hi! What's your name?</em></p>
+      <input id="name-input" class="name-input" type="text" placeholder="Il tuo nome..." maxlength="20" />
+      <br>
+      <button id="start-btn" class="big-btn">Andiamo! Let's go! 🚀</button>
+    </div>
+  </section>
+
+  <!-- ============ DASHBOARD ============ -->
+  <section id="screen-dashboard" class="screen">
+    <header>
+      <span class="logo">🌈 English Adventure</span>
+      <span class="greeting" id="greeting-pill">Ciao!</span>
+    </header>
+
+    <div class="intro-banner">
+      🎵 Scegli una lezione e canta con me! <br>
+      <small><em>Pick a lesson and sing along with me!</em></small>
+    </div>
+
+    <div class="lesson-grid" id="lesson-grid"></div>
+
+    <footer class="mini">
+      Made with 🧡 for little English learners
+    </footer>
+  </section>
+
+  <!-- ============ LESSON ============ -->
+  <section id="screen-lesson" class="screen">
+    <button class="back-btn" onclick="goDashboard()">← Torna indietro</button>
+    <div id="lesson-content"></div>
+  </section>
+
+</div>
+
+<!-- Celebration overlay -->
+<div id="celebrate" class="celebrate">
+  <div class="celebrate-card">
+    <span class="big">🎉</span>
+    <h2>Bravissimo!</h2>
+    <p id="celebrate-msg">You did it! Hai vinto tutte le stelline! ⭐⭐⭐</p>
+    <button class="big-btn" onclick="closeCelebrate()">Continua!</button>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   LESSON DATA
+   Each lesson has: a YouTube nursery rhyme with English captions,
+   key vocab (English + Italian), and 3 colour-the-answer questions.
+   ============================================================ */
+
+const LESSONS = [
+  {
+    id: 'farm',
+    color: 1,
+    emoji: '🐄',
+    titleEn: 'Old MacDonald Had a Farm',
+    titleIt: 'La fattoria del nonno',
+    intro: "Today we sing about a farmer and his animals! / Oggi cantiamo del contadino e dei suoi animali!",
+    video: 'https://www.youtube.com/embed/_6HzoUcx3eo?cc_load_policy=1&cc_lang_pref=en&hl=en',
+    vocab: [
+      { en: 'cow',    it: 'mucca',   emoji: '🐄' },
+      { en: 'pig',    it: 'maiale',  emoji: '🐖' },
+      { en: 'duck',   it: 'anatra',  emoji: '🦆' },
+      { en: 'sheep',  it: 'pecora',  emoji: '🐑' },
+      { en: 'horse',  it: 'cavallo', emoji: '🐴' },
+      { en: 'farm',   it: 'fattoria',emoji: '🏡' }
+    ],
+    questions: [
+      {
+        textEn: "Colour the COW pink!",
+        textIt: "Colora la MUCCA di rosa!",
+        fillColor: '#FF8FB1',
+        shapes: [
+          { label: 'cow',  emoji: '🐄', correct: true },
+          { label: 'duck', emoji: '🦆' },
+          { label: 'pig',  emoji: '🐖' }
+        ]
+      },
+      {
+        textEn: "Colour the SHEEP yellow!",
+        textIt: "Colora la PECORA di giallo!",
+        fillColor: '#FFD23F',
+        shapes: [
+          { label: 'horse', emoji: '🐴' },
+          { label: 'sheep', emoji: '🐑', correct: true },
+          { label: 'cow',   emoji: '🐄' }
+        ]
+      },
+      {
+        textEn: "Colour the DUCK blue!",
+        textIt: "Colora l'ANATRA di blu!",
+        fillColor: '#4D9DE0',
+        shapes: [
+          { label: 'pig',   emoji: '🐖' },
+          { label: 'sheep', emoji: '🐑' },
+          { label: 'duck',  emoji: '🦆', correct: true }
+        ]
+      }
+    ]
+  },
+
+  {
+    id: 'body',
+    color: 2,
+    emoji: '👃',
+    titleEn: 'Head, Shoulders, Knees & Toes',
+    titleIt: 'Testa, spalle, ginocchia e piedi',
+    intro: "Let's learn body parts! / Impariamo le parti del corpo!",
+    video: 'https://www.youtube.com/embed/WX8HmogNyCM?cc_load_policy=1&cc_lang_pref=en&hl=en',
+    vocab: [
+      { en: 'head',     it: 'testa',     emoji: '🗣️' },
+      { en: 'eyes',     it: 'occhi',     emoji: '👀' },
+      { en: 'nose',     it: 'naso',      emoji: '👃' },
+      { en: 'mouth',    it: 'bocca',     emoji: '👄' },
+      { en: 'hand',     it: 'mano',      emoji: '✋' },
+      { en: 'foot',     it: 'piede',     emoji: '🦶' }
+    ],
+    questions: [
+      {
+        textEn: "Colour the EYES green!",
+        textIt: "Colora gli OCCHI di verde!",
+        fillColor: '#6BCB77',
+        shapes: [
+          { label: 'eyes',  emoji: '👀', correct: true },
+          { label: 'nose',  emoji: '👃' },
+          { label: 'mouth', emoji: '👄' }
+        ]
+      },
+      {
+        textEn: "Colour the HAND yellow!",
+        textIt: "Colora la MANO di giallo!",
+        fillColor: '#FFD23F',
+        shapes: [
+          { label: 'foot', emoji: '🦶' },
+          { label: 'hand', emoji: '✋', correct: true },
+          { label: 'head', emoji: '🗣️' }
+        ]
+      },
+      {
+        textEn: "Colour the NOSE pink!",
+        textIt: "Colora il NASO di rosa!",
+        fillColor: '#FF8FB1',
+        shapes: [
+          { label: 'mouth', emoji: '👄' },
+          { label: 'foot',  emoji: '🦶' },
+          { label: 'nose',  emoji: '👃', correct: true }
+        ]
+      }
+    ]
+  },
+
+  {
+    id: 'sky',
+    color: 3,
+    emoji: '⭐',
+    titleEn: 'Twinkle Twinkle Little Star',
+    titleIt: 'Brilla brilla stellina',
+    intro: "Look up at the sky! / Guarda il cielo!",
+    video: 'https://www.youtube.com/embed/yCjJyiqpAuU?cc_load_policy=1&cc_lang_pref=en&hl=en',
+    vocab: [
+      { en: 'star',  it: 'stella',  emoji: '⭐' },
+      { en: 'moon',  it: 'luna',    emoji: '🌙' },
+      { en: 'sun',   it: 'sole',    emoji: '☀️' },
+      { en: 'sky',   it: 'cielo',   emoji: '🌌' },
+      { en: 'cloud', it: 'nuvola',  emoji: '☁️' },
+      { en: 'night', it: 'notte',   emoji: '🌃' }
+    ],
+    questions: [
+      {
+        textEn: "Colour the STAR yellow!",
+        textIt: "Colora la STELLA di giallo!",
+        fillColor: '#FFD23F',
+        shapes: [
+          { label: 'moon',  emoji: '🌙' },
+          { label: 'star',  emoji: '⭐', correct: true },
+          { label: 'cloud', emoji: '☁️' }
+        ]
+      },
+      {
+        textEn: "Colour the MOON blue!",
+        textIt: "Colora la LUNA di blu!",
+        fillColor: '#4D9DE0',
+        shapes: [
+          { label: 'sun',  emoji: '☀️' },
+          { label: 'moon', emoji: '🌙', correct: true },
+          { label: 'star', emoji: '⭐' }
+        ]
+      },
+      {
+        textEn: "Colour the SUN red!",
+        textIt: "Colora il SOLE di rosso!",
+        fillColor: '#FF5A5F',
+        shapes: [
+          { label: 'cloud', emoji: '☁️' },
+          { label: 'sun',   emoji: '☀️', correct: true },
+          { label: 'moon',  emoji: '🌙' }
+        ]
+      }
+    ]
+  },
+
+  {
+    id: 'happy',
+    color: 4,
+    emoji: '😊',
+    titleEn: "If You're Happy and You Know It",
+    titleIt: 'Se sei felice e tu lo sai',
+    intro: "Let's clap our hands! / Battiamo le mani!",
+    video: 'https://www.youtube.com/embed/71hqRT9U0wg?cc_load_policy=1&cc_lang_pref=en&hl=en',
+    vocab: [
+      { en: 'happy', it: 'felice',  emoji: '😊' },
+      { en: 'sad',   it: 'triste',  emoji: '😢' },
+      { en: 'clap',  it: 'battere', emoji: '👏' },
+      { en: 'jump',  it: 'saltare', emoji: '🤸' },
+      { en: 'sing',  it: 'cantare', emoji: '🎤' },
+      { en: 'smile', it: 'sorridere',emoji: '😄' }
+    ],
+    questions: [
+      {
+        textEn: "Colour the HAPPY face yellow!",
+        textIt: "Colora la faccia FELICE di giallo!",
+        fillColor: '#FFD23F',
+        shapes: [
+          { label: 'sad',   emoji: '😢' },
+          { label: 'happy', emoji: '😊', correct: true },
+          { label: 'sing',  emoji: '🎤' }
+        ]
+      },
+      {
+        textEn: "Colour the CLAP hands pink!",
+        textIt: "Colora le mani che battono di rosa!",
+        fillColor: '#FF8FB1',
+        shapes: [
+          { label: 'jump', emoji: '🤸' },
+          { label: 'sing', emoji: '🎤' },
+          { label: 'clap', emoji: '👏', correct: true }
+        ]
+      },
+      {
+        textEn: "Colour the JUMP green!",
+        textIt: "Colora il SALTO di verde!",
+        fillColor: '#6BCB77',
+        shapes: [
+          { label: 'jump',  emoji: '🤸', correct: true },
+          { label: 'happy', emoji: '😊' },
+          { label: 'sad',   emoji: '😢' }
+        ]
+      }
+    ]
+  },
+
+  {
+    id: 'bus',
+    color: 5,
+    emoji: '🚌',
+    titleEn: 'The Wheels on the Bus',
+    titleIt: 'Le ruote dell\'autobus',
+    intro: "All aboard! / Tutti a bordo!",
+    video: 'https://www.youtube.com/embed/e_04ZrNroTo?cc_load_policy=1&cc_lang_pref=en&hl=en',
+    vocab: [
+      { en: 'bus',    it: 'autobus', emoji: '🚌' },
+      { en: 'car',    it: 'macchina',emoji: '🚗' },
+      { en: 'wheel',  it: 'ruota',   emoji: '☸️' },
+      { en: 'train',  it: 'treno',   emoji: '🚆' },
+      { en: 'bike',   it: 'bici',    emoji: '🚲' },
+      { en: 'road',   it: 'strada',  emoji: '🛣️' }
+    ],
+    questions: [
+      {
+        textEn: "Colour the BUS yellow!",
+        textIt: "Colora l'AUTOBUS di giallo!",
+        fillColor: '#FFD23F',
+        shapes: [
+          { label: 'car',   emoji: '🚗' },
+          { label: 'bus',   emoji: '🚌', correct: true },
+          { label: 'bike',  emoji: '🚲' }
+        ]
+      },
+      {
+        textEn: "Colour the CAR red!",
+        textIt: "Colora la MACCHINA di rosso!",
+        fillColor: '#FF5A5F',
+        shapes: [
+          { label: 'train', emoji: '🚆' },
+          { label: 'car',   emoji: '🚗', correct: true },
+          { label: 'bus',   emoji: '🚌' }
+        ]
+      },
+      {
+        textEn: "Colour the TRAIN green!",
+        textIt: "Colora il TRENO di verde!",
+        fillColor: '#6BCB77',
+        shapes: [
+          { label: 'bike',  emoji: '🚲' },
+          { label: 'car',   emoji: '🚗' },
+          { label: 'train', emoji: '🚆', correct: true }
+        ]
+      }
+    ]
+  }
+];
+
+/* ============================================================
+   STATE & STORAGE
+   ============================================================ */
+const STORAGE_KEY = 'english-adventure-v1';
+let state = loadState();
+
+function loadState() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (raw) return JSON.parse(raw);
+  } catch (e) {}
+  return { name: '', progress: {} }; // progress: { lessonId: starsEarned }
+}
+function saveState() {
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (e) {}
+}
+
+/* ============================================================
+   NAVIGATION
+   ============================================================ */
+function show(screenId) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(screenId).classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function goDashboard() {
+  document.getElementById('greeting-pill').textContent =
+    state.name ? `Ciao ${state.name}!` : 'Ciao!';
+  renderLessonGrid();
+  show('screen-dashboard');
+}
+
+/* ============================================================
+   WELCOME
+   ============================================================ */
+document.getElementById('start-btn').addEventListener('click', () => {
+  const name = document.getElementById('name-input').value.trim();
+  state.name = name || 'amico';
+  saveState();
+  goDashboard();
+});
+document.getElementById('name-input').addEventListener('keydown', e => {
+  if (e.key === 'Enter') document.getElementById('start-btn').click();
+});
+
+// If returning visitor, skip welcome
+if (state.name) {
+  document.getElementById('name-input').value = state.name;
+  goDashboard();
+}
+
+/* ============================================================
+   DASHBOARD GRID
+   ============================================================ */
+function renderLessonGrid() {
+  const grid = document.getElementById('lesson-grid');
+  grid.innerHTML = '';
+  LESSONS.forEach(lesson => {
+    const stars = state.progress[lesson.id] || 0;
+    const starsHtml = [1,2,3].map(i =>
+      `<span class="star${i <= stars ? ' earned' : ''}">⭐</span>`).join('');
+    const card = document.createElement('div');
+    card.className = 'lesson-card';
+    card.dataset.color = lesson.color;
+    card.innerHTML = `
+      <span class="lesson-emoji">${lesson.emoji}</span>
+      <div class="lesson-title-en">${lesson.titleEn}</div>
+      <div class="lesson-title-it">${lesson.titleIt}</div>
+      <div class="stars">${starsHtml}</div>
+    `;
+    card.addEventListener('click', () => openLesson(lesson.id));
+    grid.appendChild(card);
+  });
+}
+
+/* ============================================================
+   LESSON VIEW
+   ============================================================ */
+let currentLesson = null;
+let currentScore  = 0;
+
+function openLesson(id) {
+  const lesson = LESSONS.find(l => l.id === id);
+  currentLesson = lesson;
+  currentScore = 0;
+
+  const root = document.getElementById('lesson-content');
+  root.innerHTML = `
+    <div class="lesson-header">
+      <h2>${lesson.emoji} ${lesson.titleEn}</h2>
+      <div class="it">${lesson.titleIt}</div>
+    </div>
+
+    <div class="section">
+      <span class="section-label">🎬 Guarda & Canta</span>
+      <h3>Watch the song!</h3>
+      <p class="italian">${lesson.intro}</p>
+      <div class="video-wrap">
+        <iframe
+          src="${lesson.video}"
+          title="${lesson.titleEn}"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen></iframe>
+      </div>
+      <div class="video-note">
+        💡 <strong>Captions:</strong> Click the CC button on the video to show English words.
+        <em>Clicca "CC" sul video per vedere le parole in inglese!</em>
+      </div>
+    </div>
+
+    <div class="section">
+      <span class="section-label">📚 Parole Nuove</span>
+      <h3>New Words</h3>
+      <p class="italian">Clicca le parole per scoprirle! / Click each word to discover it!</p>
+      <div class="vocab-grid">
+        ${lesson.vocab.map(v => `
+          <div class="vocab-card" onclick="this.classList.toggle('flip')">
+            <span class="emoji">${v.emoji}</span>
+            <div class="en">${v.en}</div>
+            <div class="it">${v.it}</div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+
+    <div class="section">
+      <span class="section-label">🎨 Colora la Risposta</span>
+      <h3>Colour the Answer!</h3>
+      <p class="italian">Tocca la cosa giusta per colorarla! / Tap the right one to colour it in!</p>
+      <div id="quiz-container"></div>
+      <button id="finish-btn" class="finish-btn" style="display:none">Ho finito! 🏆</button>
+    </div>
+  `;
+
+  renderQuiz(lesson);
+  show('screen-lesson');
+}
+
+function renderQuiz(lesson) {
+  const container = document.getElementById('quiz-container');
+  container.innerHTML = '';
+  lesson.questions.forEach((q, qi) => {
+    const qEl = document.createElement('div');
+    qEl.className = 'question';
+    qEl.innerHTML = `
+      <div class="question-text">${q.textEn}</div>
+      <div class="question-it">${q.textIt}</div>
+      <div class="colour-row" data-q="${qi}">
+        ${q.shapes.map((s, si) => `
+          <div class="shape-btn" data-q="${qi}" data-s="${si}">
+            ${shapeSVG(s.label)}
+            <div class="label">${s.label}</div>
+          </div>
+        `).join('')}
+      </div>
+      <div class="feedback" id="fb-${qi}"></div>
+    `;
+    container.appendChild(qEl);
+  });
+
+  container.querySelectorAll('.shape-btn').forEach(btn => {
+    btn.addEventListener('click', handleShapeClick);
+  });
+}
+
+function handleShapeClick(e) {
+  const btn = e.currentTarget;
+  if (btn.classList.contains('coloured') || btn.classList.contains('disabled')) return;
+  const qi = +btn.dataset.q;
+  const si = +btn.dataset.s;
+  const q  = currentLesson.questions[qi];
+  const shape = q.shapes[si];
+  const fb = document.getElementById('fb-' + qi);
+
+  if (shape.correct) {
+    // Fill the SVG inside this button
+    btn.querySelectorAll('svg .fillable').forEach(el => {
+      el.style.fill = q.fillColor;
+      el.style.transition = 'fill 0.5s ease';
+    });
+    btn.classList.add('coloured');
+    fb.textContent = '✨ Bravissimo! Yes! ✨';
+    fb.className = 'feedback good';
+    currentScore++;
+    // disable siblings
+    document.querySelectorAll(`.shape-btn[data-q="${qi}"]`).forEach(b => {
+      if (b !== btn) b.classList.add('disabled');
+    });
+    checkComplete();
+  } else {
+    btn.classList.add('wrong');
+    fb.textContent = '🤔 Riprova! Try again!';
+    fb.className = 'feedback bad';
+    setTimeout(() => btn.classList.remove('wrong'), 500);
+  }
+}
+
+function checkComplete() {
+  const total = currentLesson.questions.length;
+  const done  = document.querySelectorAll('.shape-btn.coloured').length;
+  if (done === total) {
+    document.getElementById('finish-btn').style.display = 'block';
+    document.getElementById('finish-btn').onclick = finishLesson;
+  }
+}
+
+function finishLesson() {
+  // Award stars based on score (always 3 here since they had to get all correct)
+  const stars = 3;
+  const existing = state.progress[currentLesson.id] || 0;
+  if (stars > existing) state.progress[currentLesson.id] = stars;
+  saveState();
+
+  document.getElementById('celebrate-msg').innerHTML =
+    `${state.name ? state.name + ', ' : ''}hai imparato <strong>${currentLesson.titleEn}</strong>! ⭐⭐⭐<br>
+     <em>You learned ${currentLesson.titleEn}!</em>`;
+  document.getElementById('celebrate').classList.add('show');
+}
+
+function closeCelebrate() {
+  document.getElementById('celebrate').classList.remove('show');
+  goDashboard();
+}
+
+/* ============================================================
+   SVG ICONS for the quiz (so clicks can "colour them in")
+   Each SVG has a .fillable element that recolours on correct.
+   ============================================================ */
+function shapeSVG(label) {
+  const ICONS = {
+    // Farm animals
+    cow: `<svg width="80" height="80" viewBox="0 0 100 100">
+      <ellipse class="fillable" cx="50" cy="60" rx="35" ry="28" fill="#fff" stroke="#2B2D42" stroke-width="3"/>
+      <circle cx="40" cy="55" r="4" fill="#2B2D42"/><circle cx="60" cy="55" r="4" fill="#2B2D42"/>
+      <ellipse cx="50" cy="72" rx="14" ry="9" fill="#FF8FB1" stroke="#2B2D42" stroke-width="2"/>
+      <circle cx="45" cy="72" r="2" fill="#2B2D42"/><circle cx="55" cy="72" r="2" fill="#2B2D42"/>
+      <path d="M25 38 L30 50" stroke="#2B2D42" stroke-width="3"/><path d="M75 38 L70 50" stroke="#2B2D42" stroke-width="3"/>
+    </svg>`,
+    pig: `<svg width="80" height="80" viewBox="0 0 100 100">
+      <ellipse class="fillable" cx="50" cy="60" rx="32" ry="26" fill="#fff" stroke="#2B2D42" stroke-width="3"/>
+      <ellipse cx="50" cy="68" rx="13" ry="8" fill="#fff" stroke="#2B2D42" stroke-width="2"/>
+      <circle cx="46" cy="68" r="2" fill="#2B2D42"/><circle cx="54" cy="68" r="2" fill="#2B2D42"/>
+      <circle cx="40" cy="52" r="3" fill="#2B2D42"/><circle cx="60" cy="52" r="3" fill="#2B2D42"/>
+      <path d="M28 40 L36 46 L32 36 Z" fill="#fff" stroke="#2B2D42" stroke-width="2"/>
+      <path d="M72 40 L64 46 L68 36 Z" fill="#fff" stroke="#2B2D42" stroke-width="2"/>
+    </svg>`,
+    duck: `<svg width="80" height="80" viewBox="0 0 100 100">
+      <ellipse class="fillable" cx="50" cy="65" rx="30" ry="22" fill="#fff" stroke="#2B2D42" stroke-width="3"/>
+      <circle class="fillable" cx="68" cy="42" r="16" fill="#fff" stroke="#2B2D42" stroke-width="3"/>
+      <circle cx="72" cy="40" r="3" fill="#2B2D42"/>
+      <path d="M82 42 L92 38 L92 48 L82 46 Z" fill="#FFD23F" stroke="#2B2D42" stroke-width="2"/>
+    </svg>`,
+    sheep: `<svg width="80" height="80" viewBox="0 0 100 100">
+      <circle class="fillable" cx="35" cy="55" r="10" fill="#fff" stroke="#2B2D42" stroke-width="2"/>
+      <circle class="fillable" cx="50" cy="48" r="11" fill="#fff" stroke="#2B2D42" stroke-width="2"/>
+      <circle class="fillable" cx="65" cy="55" r="10" fill="#fff" stroke="#2B2D42" stroke-width="2"/>
+      <circle class="fillable" cx="42" cy="65" r="10" fill="#fff" stroke="#2B2D42" stroke-width="2"/>
+      <circle class="fillable" cx="58" cy="65" r="10" fill="#fff" stroke="#2B2D42" stroke-width="2"/>
+      <ellipse cx="50" cy="68" rx="10" ry="8" fill="#2B2D42"/>
+      <circle cx="46" cy="66" r="1.5" fill="#fff"/><circle cx="54" cy="66" r="1.5" fill="#fff"/>
+    </svg>`,
+    horse: `<svg width="80" height="80" viewBox="0 0 100 100">
+      <ellipse class="fillable" cx="50" cy="60" rx="30" ry="24" fill="#fff" stroke="#2B2D42" stroke-width="3"/>
+      <path class="fillable" d="M25 40 Q22 30 30 28 Q35 30 35 45 Z" fill="#fff" stroke="#2B2D42" stroke-width="2"/>
+      <circle cx="40" cy="55" r="3" fill="#2B2D42"/><circle cx="60" cy="55" r="3" fill="#2B2D42"/>
+      <ellipse cx="50" cy="70" rx="6" ry="4" fill="#2B2D42"/>
+    </svg>`,
+
+    // Body
+    eyes: `<svg width="80" height="80" viewBox="0 0 100 100">
+      <ellipse class="fillable" cx="30" cy="50" rx="14" ry="10" fill="#fff" stroke="#2B2D42" stroke-width="3"/>
+      <ellipse class="fillable" cx="70" cy="50" rx="14" ry="10" fill="#fff" stroke="#2B2D42" stroke-width="3"/>
+      <circle cx="30" cy="50" r="5" fill="#2B2D42"/><circle cx="70" cy="50" r="5" fill="#2B2D42"/>
+      <circle cx="32" cy="48" r="1.5" fill="#fff"/><circle cx="72" cy="48" r="1.5" fill="#fff"/>
+    </svg>`,
+    nose: `<svg width="80" height="80" viewBox="0 0 100 100">
+      <path class="fillable" d="M50 20 Q42 40 40 65 Q40 78 50 78 Q60 78 60 65 Q58 40 50 20 Z"
+        fill="#fff" stroke="#2B2D42" stroke-width="3"/>
+      <ellipse cx="45" cy="70" rx="3" ry="4" fill="#2B2D42"/>
+      <ellipse cx="55" cy="70" rx="3" ry="4" fill="#2B2D42"/>
+    </svg>`,
+    mouth: `<svg width="80" height="80" viewBox="0 0 100 100">
+      <path class="fillable" d="M20 50 Q50 80 80 50 Q50 60 20 50 Z" fill="#fff" stroke="#2B2D42" stroke-width="3"/>
+      <path d="M20 50 Q50 60 80 50" stroke="#2B2D42" stroke-width="2" fill="none"/>
+    </svg>`,
+    hand: `<svg width="80" height="80" viewBox="0 0 100 100">
+      <path class="fillable" d="M30 50 L30 30 Q30 26 34 26 Q38 26 38 30 L38 45
+        L42 20 Q42 16 46 16 Q50 16 50 20 L50 45
+        L54 22 Q54 18 58 18 Q62 18 62 22 L62 45
+        L66 30 Q66 26 70 26 Q74 26 74 30 L74 55
+        Q74 80 50 80 Q30 80 30 50 Z"
+        fill="#fff" stroke="#2B2D42" stroke-width="3"/>
+    </svg>`,
+    foot: `<svg width="80" height="80" viewBox="0 0 100 100">
+      <ellipse class="fillable" cx="55" cy="60" rx="22" ry="18" fill="#fff" stroke="#2B2D42" stroke-width="3"/>
+      <circle class="fillable" cx="36" cy="40" r="5" fill="#fff" stroke="#2B2D42" stroke-width="2"/>
+      <circle class="fillable" cx="44" cy="34" r="4" fill="#fff" stroke="#2B2D42" stroke-width="2"/>
+      <circle class="fillable" cx="52" cy="32" r="4" fill="#fff" stroke="#2B2D42" stroke-width="2"/>
+      <circle class="fillable" cx="60" cy="33" r="4" fill="#fff" stroke="#2B2D42" stroke-width="2"/>
+      <circle class="fillable" cx="68" cy="36" r="3.5" fill="#fff" stroke="#2B2D42" stroke-width="2"/>
+    </svg>`,
+    head: `<svg width="80" height="80" viewBox="0 0 100 100">
+      <circle class="fillable" cx="50" cy="50" r="32" fill="#fff" stroke="#2B2D42" stroke-width="3"/>
+      <circle cx="40" cy="45" r="3" fill="#2B2D42"/><circle cx="60" cy="45" r="3" fill="#2B2D42"/>
+      <path d="M40 62 Q50 70 60 62" stroke="#2B2D42" stroke-width="3" fill="none" stroke-linecap="round"/>
+    </svg>`,
+
+    // Sky
+    star: `<svg width="80" height="80" viewBox="0 0 100 100">
+      <polygon class="fillable" points="50,10 61,38 92,38 67,57 76,87 50,69 24,87 33,57 8,38 39,38"
+        fill="#fff" stroke="#2B2D42" stroke-width="3" stroke-linejoin="round"/>
+    </svg>`,
+    moon: `<svg width="80" height="80" viewBox="0 0 100 100">
+      <path class="fillable" d="M65 20 A35 35 0 1 0 65 80 A28 28 0 1 1 65 20 Z"
+        fill="#fff" stroke="#2B2D42" stroke-width="3"/>
+    </svg>`,
+    sun: `<svg width="80" height="80" viewBox="0 0 100 100">
+      <g stroke="#2B2D42" stroke-width="3" stroke-linecap="round">
+        <line x1="50" y1="8"  x2="50" y2="20"/>
+        <line x1="50" y1="80" x2="50" y2="92"/>
+        <line x1="8"  y1="50" x2="20" y2="50"/>
+        <line x1="80" y1="50" x2="92" y2="50"/>
+        <line x1="20" y1="20" x2="28" y2="28"/>
+        <line x1="72" y1="72" x2="80" y2="80"/>
+        <line x1="80" y1="20" x2="72" y2="28"/>
+        <line x1="28" y1="72" x2="20" y2="80"/>
+      </g>
+      <circle class="fillable" cx="50" cy="50" r="22" fill="#fff" stroke="#2B2D42" stroke-width="3"/>
+    </svg>`,
+    cloud: `<svg width="80" height="80" viewBox="0 0 100 100">
+      <path class="fillable" d="M25 65 Q15 65 15 55 Q15 45 25 45 Q25 32 40 32 Q50 25 60 32
+        Q75 32 75 45 Q85 45 85 55 Q85 65 75 65 Z"
+        fill="#fff" stroke="#2B2D42" stroke-width="3"/>
+    </svg>`,
+
+    // Emotions/actions
+    happy: `<svg width="80" height="80" viewBox="0 0 100 100">
+      <circle class="fillable" cx="50" cy="50" r="35" fill="#fff" stroke="#2B2D42" stroke-width="3"/>
+      <circle cx="38" cy="42" r="4" fill="#2B2D42"/><circle cx="62" cy="42" r="4" fill="#2B2D42"/>
+      <path d="M32 58 Q50 78 68 58" stroke="#2B2D42" stroke-width="4" fill="none" stroke-linecap="round"/>
+    </svg>`,
+    sad: `<svg width="80" height="80" viewBox="0 0 100 100">
+      <circle class="fillable" cx="50" cy="50" r="35" fill="#fff" stroke="#2B2D42" stroke-width="3"/>
+      <circle cx="38" cy="42" r="4" fill="#2B2D42"/><circle cx="62" cy="42" r="4" fill="#2B2D42"/>
+      <path d="M32 70 Q50 55 68 70" stroke="#2B2D42" stroke-width="4" fill="none" stroke-linecap="round"/>
+      <path d="M38 55 Q35 65 40 68" stroke="#4D9DE0" stroke-width="3" fill="none"/>
+    </svg>`,
+    clap: `<svg width="80" height="80" viewBox="0 0 100 100">
+      <path class="fillable" d="M20 50 Q20 35 35 35 L40 30 Q45 30 45 35 L45 50 Q45 65 30 65 Q20 65 20 50 Z"
+        fill="#fff" stroke="#2B2D42" stroke-width="3"/>
+      <path class="fillable" d="M80 50 Q80 35 65 35 L60 30 Q55 30 55 35 L55 50 Q55 65 70 65 Q80 65 80 50 Z"
+        fill="#fff" stroke="#2B2D42" stroke-width="3"/>
+      <g stroke="#FFD23F" stroke-width="2.5" stroke-linecap="round">
+        <line x1="50" y1="20" x2="50" y2="28"/>
+        <line x1="35" y1="22" x2="40" y2="28"/>
+        <line x1="65" y1="22" x2="60" y2="28"/>
+      </g>
+    </svg>`,
+    jump: `<svg width="80" height="80" viewBox="0 0 100 100">
+      <circle class="fillable" cx="50" cy="25" r="10" fill="#fff" stroke="#2B2D42" stroke-width="3"/>
+      <path class="fillable" d="M50 35 L50 60 M50 45 L35 35 M50 45 L65 35 M50 60 L40 80 M50 60 L60 80"
+        stroke="#2B2D42" stroke-width="4" fill="none" stroke-linecap="round"/>
+      <path d="M30 88 Q50 85 70 88" stroke="#2B2D42" stroke-width="2" fill="none" stroke-dasharray="3,3"/>
+    </svg>`,
+    sing: `<svg width="80" height="80" viewBox="0 0 100 100">
+      <rect class="fillable" x="42" y="20" width="16" height="40" rx="8" fill="#fff" stroke="#2B2D42" stroke-width="3"/>
+      <rect x="46" y="60" width="8" height="20" fill="#2B2D42"/>
+      <rect x="36" y="80" width="28" height="4" fill="#2B2D42"/>
+      <text x="20" y="35" font-size="14" fill="#FF5A5F">♪</text>
+      <text x="72" y="45" font-size="16" fill="#4D9DE0">♫</text>
+    </svg>`,
+
+    // Transport
+    bus: `<svg width="80" height="80" viewBox="0 0 100 100">
+      <rect class="fillable" x="15" y="30" width="70" height="40" rx="6" fill="#fff" stroke="#2B2D42" stroke-width="3"/>
+      <rect x="22" y="38" width="14" height="12" fill="#4D9DE0" stroke="#2B2D42" stroke-width="2"/>
+      <rect x="42" y="38" width="14" height="12" fill="#4D9DE0" stroke="#2B2D42" stroke-width="2"/>
+      <rect x="62" y="38" width="14" height="12" fill="#4D9DE0" stroke="#2B2D42" stroke-width="2"/>
+      <circle cx="30" cy="75" r="7" fill="#2B2D42"/><circle cx="70" cy="75" r="7" fill="#2B2D42"/>
+    </svg>`,
+    car: `<svg width="80" height="80" viewBox="0 0 100 100">
+      <path class="fillable" d="M15 60 L20 45 Q22 38 30 38 L70 38 Q78 38 80 45 L85 60 L85 70 L15 70 Z"
+        fill="#fff" stroke="#2B2D42" stroke-width="3"/>
+      <path d="M28 42 L35 50 L65 50 L72 42" fill="#4D9DE0" stroke="#2B2D42" stroke-width="2"/>
+      <circle cx="30" cy="72" r="6" fill="#2B2D42"/><circle cx="70" cy="72" r="6" fill="#2B2D42"/>
+    </svg>`,
+    train: `<svg width="80" height="80" viewBox="0 0 100 100">
+      <rect class="fillable" x="15" y="30" width="70" height="40" rx="8" fill="#fff" stroke="#2B2D42" stroke-width="3"/>
+      <rect x="22" y="38" width="18" height="14" fill="#FFD23F" stroke="#2B2D42" stroke-width="2"/>
+      <rect x="48" y="38" width="18" height="14" fill="#FFD23F" stroke="#2B2D42" stroke-width="2"/>
+      <circle class="fillable" cx="72" cy="48" r="6" fill="#fff" stroke="#2B2D42" stroke-width="2"/>
+      <circle cx="30" cy="76" r="6" fill="#2B2D42"/><circle cx="50" cy="76" r="6" fill="#2B2D42"/><circle cx="70" cy="76" r="6" fill="#2B2D42"/>
+    </svg>`,
+    bike: `<svg width="80" height="80" viewBox="0 0 100 100">
+      <circle class="fillable" cx="25" cy="65" r="15" fill="#fff" stroke="#2B2D42" stroke-width="3"/>
+      <circle class="fillable" cx="75" cy="65" r="15" fill="#fff" stroke="#2B2D42" stroke-width="3"/>
+      <path d="M25 65 L50 35 L75 65 M50 35 L60 65 M40 30 L60 30" stroke="#2B2D42" stroke-width="3" fill="none" stroke-linecap="round"/>
+    </svg>`
+  };
+  return ICONS[label] || `<svg width="80" height="80" viewBox="0 0 100 100"><circle class="fillable" cx="50" cy="50" r="35" fill="#fff" stroke="#2B2D42" stroke-width="3"/></svg>`;
+}
+</script>
+
+</body>
+</html>
